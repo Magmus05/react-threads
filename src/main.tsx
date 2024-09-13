@@ -15,39 +15,40 @@ import { CurrentPost } from "./pages/current-post"
 import { UserProfile } from "./pages/user-profile"
 import { Followers } from "./pages/followers"
 import { Following } from "./pages/following"
+import { AuthGuard } from "./features/user/authGuard"
 
 const container = document.getElementById("root")
 
 const router = createBrowserRouter([
   {
     path: "/auth",
-    element: <Auth/>,
+    element: <Auth />,
   },
   {
     path: "/",
-    element: <Layout/>,
+    element: <Layout />,
     children: [
       {
-        path:'',
-        element:<Posts />
+        path: "",
+        element: <Posts />,
       },
       {
-        path:'post/:id',
-        element:<CurrentPost />
+        path: "post/:id",
+        element: <CurrentPost />,
       },
       {
-        path:'user/:id',
-        element:<UserProfile />
+        path: "users/:id",
+        element: <UserProfile />,
       },
       {
-        path:'followers',
-        element:<Followers />
+        path: "followers",
+        element: <Followers />,
       },
       {
-        path:'following',
-        element:<Following />
-      }
-    ]
+        path: "following",
+        element: <Following />,
+      },
+    ],
   },
 ])
 
@@ -59,7 +60,9 @@ if (container) {
       <Provider store={store}>
         <NextUIProvider>
           <ThemeProvider>
-            <RouterProvider router={router} />
+            <AuthGuard>
+              <RouterProvider router={router} />
+            </AuthGuard>
           </ThemeProvider>
         </NextUIProvider>
       </Provider>

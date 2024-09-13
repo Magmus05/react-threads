@@ -1,6 +1,7 @@
 import type { User } from "../types"
 import { api } from "./api"
 
+
 export const userApi = api.injectEndpoints({
   endpoints: builder => ({
     login: builder.mutation<
@@ -35,7 +36,7 @@ export const userApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
-    updateUser: builder.mutation<User, { userData: FormData, id: string }>({
+    updateUser: builder.mutation<User, { userData: FormData; id: string }>({
       query: ({ userData, id }) => ({
         url: `/users/${id}`,
         method: "PUT",
@@ -46,15 +47,15 @@ export const userApi = api.injectEndpoints({
 })
 
 export const {
-	useRegisterMutation,
-	useLoginMutation,
-	useCurrentQuery,
-	useLazyCurrentQuery,
-	useGetUserByIdQuery,
-	useLazyGetUserByIdQuery,
-	useUpdateUserMutation
+  useRegisterMutation,
+  useLoginMutation,
+  useCurrentQuery,
+  useLazyCurrentQuery,
+  useGetUserByIdQuery,
+  useLazyGetUserByIdQuery,
+  useUpdateUserMutation,
 } = userApi
 
-export const{
-	endpoints: {login, register, current, getUserById, updateUser}
+export const {
+  endpoints: { login, register, current, getUserById, updateUser },
 } = userApi

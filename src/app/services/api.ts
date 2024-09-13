@@ -21,4 +21,4 @@ export const api = createApi({
 	baseQuery: baseQueryWithRetry,
 	endpoints: ()=>({}),
 	refetchOnMountOrArgChange: true,
-})
+})  

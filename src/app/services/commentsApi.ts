@@ -3,7 +3,7 @@ import { api } from "./api"
 
 export const commentApi = api.injectEndpoints({
   endpoints: builder => ({
-    createComments: builder.mutation<Comment, Partial<Comment>>({
+    createComment: builder.mutation<Comment, Partial<Comment>>({
       query: newComment => ({
         url: "/comments",
         method: "POST",
@@ -19,9 +19,9 @@ export const commentApi = api.injectEndpoints({
   }),
 })
 
-export const { useCreateCommentsMutation, useDeleteCommentMutation } =
+export const { useCreateCommentMutation, useDeleteCommentMutation } =
   commentApi
 
 export const {
-  endpoints: { createComments, deleteComment },
+  endpoints: { createComment, deleteComment },
 } = commentApi

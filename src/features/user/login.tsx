@@ -34,12 +34,12 @@ export const Login: React.FC<Props> = ({ setSelected }) => {
   const [login, { isLoading }] = useLoginMutation()
   const navigate = useNavigate()
   const [error, setError] = useState("")
-  const [triggerCurrentCuery] = useLazyCurrentQuery()
+  const [triggerCurrentQuery] = useLazyCurrentQuery()
 
   const onSubmit = async (data: Login) => {
     try {
       await login(data).unwrap();
-			await triggerCurrentCuery().unwrap();
+			await triggerCurrentQuery().unwrap();
 			navigate('/')
     } catch (error) {
       if (hasErrorField(error)) setError(error.data.error)
